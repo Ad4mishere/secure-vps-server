@@ -1,0 +1,36 @@
+# rules.before
+#
+# Rules that should be run before the ufw command line added rules.
+#
+
+*filter
+:ufw-before-input - [0:0]
+:ufw-before-output - [0:0]
+:ufw-before-forward - [0:0]
+
+# ============================================
+# ICMP HARDENING – RATE LIMIT ECHO REQUESTS
+# ============================================
+
+-A ufw-before-input -p icmp --icmp-type echo-request \
+  -m limit --limit 1/second --limit-burst 4 -j ACCEPT
+
+-A ufw-before-input -p icmp --icmp-type echo-request -j DROP
+
+# allow all on loopback
+-A ufw-before-input -i lo -j ACCEPT
+-A ufw-before-output -o lo -j ACCEPT
+
+# drop invalid packets
+-A ufw-before-input -m conntrack --ctstate INVALID -j DROP
+
+# allow established and related connections
+-A ufw-before-input -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+# allow ICMP (other types)
+-A ufw-before-input -p icmp -j ACCEPT
+
+# allow DHCP client
+-A ufw-before-input -p udp --sport 67 --dport 68 -j ACCEPT
+
+COMMIT

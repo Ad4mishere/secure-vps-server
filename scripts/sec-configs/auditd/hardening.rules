@@ -1,0 +1,14 @@
+-w /etc/passwd   -p wa -k identity
+-w /etc/group    -p wa -k identity
+-w /etc/shadow   -p wa -k identity
+-w /etc/gshadow  -p wa -k identity
+
+-w /etc/sudoers     -p wa -k sudo
+-w /etc/sudoers.d/  -p wa -k sudo
+
+-w /etc/ssh/sshd_config -p wa -k ssh
+
+-w /bin/       -p wa -k binaries
+-w /sbin/      -p wa -k binaries
+-w /usr/bin/   -p wa -k binaries
+-w /usr/sbin/  -p wa -k binaries
