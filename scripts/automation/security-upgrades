@@ -1,0 +1,16 @@
+sudo apt update
+sudo apt install unattended-upgrades
+
+sudo dpkg-reconfigure unattended-upgrades
+
+# Press "yes"
+
+
+# Verify
+sudo cat /etc/apt/apt.conf.d/50unattended-upgrades | grep -E "security|updates"
+
+
+systemctl status unattended-upgrades
+
+
+sudo unattended-upgrades --dry-run --debug
