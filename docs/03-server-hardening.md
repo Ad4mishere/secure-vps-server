@@ -353,6 +353,19 @@ is relied upon to provide complete security; instead, multiple layers reduce att
 likelihood, limit impact, and improve resilience in the event of compromise.
 
 
+Automatic Security Updates (Unattended Upgrades)
+
+To reduce long-term attack surface and ensure timely patching of known vulnerabilities, automatic security updates were enabled on the VPS using Ubuntu’s unattended-upgrades mechanism.
+
+The configuration is limited strictly to security updates, avoiding feature or distribution upgrades to preserve system stability. This ensures that critical vulnerabilities are patched without introducing unexpected behavior or downtime.
+
+Automatic updates run periodically via systemd timers and apply only packages from trusted security repositories. Automatic reboots are explicitly disabled, as availability and controlled maintenance windows are prioritized.
+
+This measure strengthens the baseline security posture of the system by minimizing the risk of exploitation caused by outdated packages. It serves as a preventive hardening control, complementing later detection and response mechanisms such as logging, monitoring, IDS/IPS, and SOAR automation.
+
+![Automatic Server Upgrade](../screenshots/03-hardening/automatic-upgrade.png)
+
+
 
 Hardening Automation and Reproducibility
 
