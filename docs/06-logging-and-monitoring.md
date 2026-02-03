@@ -18,7 +18,7 @@ The focus was on detecting real security-relevant events, not synthetic metrics,
 
 This phase serves as the detection and notification foundation for subsequent IDS/IPS and SOAR automation stages.
 
-´´´text
+```text
 Architecture Overview
 
 🔹 Log Collection Flow
