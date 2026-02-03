@@ -31,7 +31,7 @@ System Logs / Journald
        Loki
         ↓
      Grafana
-´´´
+```
 
 Promtail collects logs from the host and pushes them to Loki
 
