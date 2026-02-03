@@ -4,6 +4,7 @@ These files reflect real-world service configuration names
 and formats, preserved for clarity and reproducibility.
 
 Secure VPS Lab - End-to-End Infrastructure Security Project
+
 Overview
 
 This repository documents a complete end-to-end security project focused on securing, operating, and monitoring a public-facing Linux VPS.
@@ -24,6 +25,7 @@ expansion into logging, monitoring, IDS/IPS, automation, and controlled attack s
 
 The lab is designed to reflect real-world security engineering and operational practices, not theoretical or checklist-based security.
 
+
 ## Project status
 
 This project is actively developed in phases.
@@ -36,16 +38,16 @@ Completed:
 - Post vulnerability assessment and documentation
 - Post vulnerability remediation of left over security risks
 - Backups and restoration
+- Logging and Monitoring
 
 
 In progress:
-- Logging and Monitoring
 - IDS/IPS automation
+- SOAR-like response automation
 
 Planned:
-- SOAR-like response automation
 - Owasp Juice Shop pentest
-- Dokumentation of Results från Owasp pentest
+- Dokumentation of Results from Owasp pentest
 
 
 
@@ -110,6 +112,7 @@ Backup and restore testing
 
 Controlled attack simulation in isolated environments
 
+
 Out of scope (by design)
 
 Application-layer vulnerability research (e.g. SQL injection, XSS)
@@ -171,9 +174,11 @@ secure-vps-lab/
 │   └── 10-portfolio-presentation.md
 ├── scripts/
 │   ├── hardening/
+│   ├── post-hardening-remediation/
 │   ├── backup/
 │   ├── monitoring/
-│   └── automation/
+│   ├── automation/
+│   └── sec-configs/
 ├── configs/
 ├── screenshots/
 ├── diagrams/
