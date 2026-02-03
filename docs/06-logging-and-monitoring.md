@@ -18,7 +18,7 @@ The focus was on detecting real security-relevant events, not synthetic metrics,
 
 This phase serves as the detection and notification foundation for subsequent IDS/IPS and SOAR automation stages.
 
-
+´´´text
 Architecture Overview
 
 🔹 Log Collection Flow
@@ -31,7 +31,7 @@ System Logs / Journald
        Loki
         ↓
      Grafana
-
+´´´
 
 Promtail collects logs from the host and pushes them to Loki
 
@@ -82,7 +82,7 @@ Correlation between sources
 
 1. Fail2Ban – SSH Brute Force Detection
 
- Purpose
+Purpose
 
 Detect confirmed SSH brute force attacks where Fail2Ban has actively banned an IP.
 
@@ -152,7 +152,6 @@ sum by (src_ip) (
   )
 )
 
-🧠 Why This Is Correct
 
 Source IP is not available as a label by default
 
@@ -161,6 +160,7 @@ Extraction enables per-IP correlation
 Enables accurate port scan detection
 
 ![UFW Log](../screenshots/06-logging-monitoring/ufw-config-logs.png)
+
 
 🚨 Alert Logic
 
@@ -185,7 +185,7 @@ Screenshot below is from a real scan from external unknown user
 
 3. Sudo – Privilege Escalation Detection
 
- Purpose
+Purpose
 
 Detect abnormal sudo usage indicating:
 
@@ -197,17 +197,12 @@ Post-auth exploitation
 
 Lateral movement
 
-📄 Log Example
+Log Example
+
 sudo: vps-server : COMMAND=/usr/bin/apt update
 
-❗ Identified Issue
-
-Some sudo log entries do not contain invoking user information, causing duplicate alerts.
-
-✅ Correct Solution
 
 Filter out sudo entries without invoking user.
-
 Final Query
 
 sum by (sudo_user) (
