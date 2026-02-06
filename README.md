@@ -206,6 +206,9 @@ Details all security improvements applied to reduce exposure and mitigate identi
 Post-Hardening Pentest
 Repeats the same security tests to verify the effectiveness of hardening measures.
 
+Post-Hardening Remediation
+A new round of server hardening is applied on vulnerabilities found after secondary Pentest.
+
 Backup & Restore
 Demonstrates operational resilience through automated backups and restore testing.
 

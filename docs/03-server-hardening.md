@@ -1,3 +1,6 @@
+3. Server Hardening
+
+
 The hardening measures applied in this phase are based on a realistic threat model
 for a public-facing Linux server. The primary threat vectors considered include
 remote network-based attacks, credential abuse, service exploitation, and
@@ -25,7 +28,7 @@ security patches. This reduces exposure to known vulnerabilities and ensures tha
 subsequent security mechanisms operate on a fully patched baseline.
 
 
-SSH Hardening
+3.1 SSH Hardening
 
 A system snapshot was taken prior to SSH hardening to ensure recoverability in the
 event of misconfiguration or administrative lockout.
@@ -59,7 +62,7 @@ exposure in the event of automated attack attempts.
 SSH was hardened to a secure baseline appropriate for a public-facing Linux server, prioritizing risk reduction, operational safety, and verifiability rather than exhaustive configuration.
 
 
-Firewall Hardening (UFW)
+3.3 Firewall Hardening (UFW)
 
 A system snapshot was taken prior to firewall hardening to ensure recoverability
 in the event of misconfiguration or loss of remote access.
@@ -87,7 +90,7 @@ The active firewall configuration is shown in Figure:
 
 
 
-Fail2Ban
+3.4 Inrustion Prevention (Fail2Ban)
 
 An intrusion prevention mechanism was implemented using Fail2Ban to provide dynamic
 protection against brute-force and automated attack attempts. Fail2Ban monitors
@@ -106,7 +109,8 @@ The active SSH jail status is shown in Figure:
 ![Fail2Ban Jail](../screenshots/03-hardening/fail2ban-jail.png)
 
 
-Operating System and Kernel Hardening
+
+3.5 Operating System and Kernel Hardening
 
 Operating system and kernel-level hardening measures were applied to reduce the
 impact of post-exploitation activity and limit information disclosure. These
@@ -136,7 +140,7 @@ The applied kernel hardening parameters are shown in Figure:
 
 
 
-Web Server Hardening
+3.6 Web Server Hardening
 
 Web server hardening measures were applied to protect client communication, reduce
 client-side attack vectors, and limit service fingerprinting.
@@ -168,7 +172,7 @@ headers, and reduced service fingerprinting are shown in the accompanying figure
 
 
 
-AppArmor
+3.7 AppArmor
 
 Application-level mandatory access controls were evaluated and strengthened using
 AppArmor to improve post-exploitation containment and defense-in-depth.
@@ -195,7 +199,7 @@ that mandatory access control is active and enforced where supported.
 ![AppArmor status](../screenshots/03-hardening/apparmor-status.png)
 
 
-Service Reduction
+3.8 Service Reduction
 
 A service reduction review was conducted to minimize unnecessary attack surface by
 disabling services not required for a production server environment.
@@ -219,6 +223,8 @@ align with the server’s intended role and security requirements.
 
 
 
+3.9 Bootloader Protection
+
 Bootloader protection was implemented to mitigate risks associated with physical or
 virtual console access. The system bootloader (GRUB) was configured with password
 protection to prevent unauthorized modification of boot parameters and access to
@@ -231,7 +237,7 @@ operating system initialization.
 
 
 
-Audit Logging (auditd)
+3.10 Audit Logging (auditd)
 
 Audit logging was implemented using auditd to provide detailed visibility into
 security-relevant system activity and to support incident detection, forensic
@@ -297,7 +303,7 @@ The validation results are shown in the following figures:
 
 
 
-File Integrity Monitoring (AIDE)
+3.11 File Integrity Monitoring (AIDE)
 
 File integrity monitoring was implemented using AIDE to detect unauthorized or
 unexpected changes to critical system files.
@@ -322,7 +328,7 @@ The AIDE implementation was verified by successfully generating the initial data
 and executing integrity checks with expected results.
 
 
-Malware Scanning (ClamAV)
+3.12 Malware Scanning (ClamAV)
 
 A basic malware scanning capability was implemented using ClamAV to provide an
 additional layer of defense against known malicious files.
@@ -339,12 +345,14 @@ security measure and does not replace other preventive or detective mechanisms.
 ![Malware Scan Result](../screenshots/03-hardening/malware-scan-result.png)
 
 
+
+3.13 Accepted Risk and Compensating Controls
+
 Several identified findings and tool-reported suggestions were intentionally
 accepted based on risk assessment, environmental context, and operational
 considerations. These include the absence of custom AppArmor profiles for certain
 services and limited systemd service sandboxing. These decisions were documented
 and compensated through layered security controls.
-
 
 
 The applied hardening measures collectively implement a defense-in-depth strategy,
@@ -353,7 +361,7 @@ is relied upon to provide complete security; instead, multiple layers reduce att
 likelihood, limit impact, and improve resilience in the event of compromise.
 
 
-Automatic Security Updates (Unattended Upgrades)
+3.14 Automatic Security Updates (Unattended Upgrades)
 
 To reduce long-term attack surface and ensure timely patching of known vulnerabilities, automatic security updates were enabled on the VPS using Ubuntu’s unattended-upgrades mechanism.
 
@@ -366,8 +374,7 @@ This measure strengthens the baseline security posture of the system by minimizi
 ![Automatic Server Upgrade](../screenshots/03-hardening/automatic-upgrade.png)
 
 
-
-Hardening Automation and Reproducibility
+3.15 Hardening Automation and Reproducibility
 
 All hardening measures described in this phase were implemented through a fully scripted and configuration-driven approach. Each control was applied using dedicated hardening scripts that reference version-controlled configuration files, ensuring consistent, repeatable, and auditable application across systems.
 
