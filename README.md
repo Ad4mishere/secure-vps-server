@@ -169,7 +169,7 @@ secure-vps-lab/
 │   ├── 06-logging-and-monitoring.md
 │   ├── 07-ids-ips.md
 │   ├── 08-soar-automation.md
-│   └── 9-portfolio-presentation.md
+│   └── 9-project-summary.md
 ├── scripts/
 │   ├── hardening/
 │   ├── post-hardening-remediation/
