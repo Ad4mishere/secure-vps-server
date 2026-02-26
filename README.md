@@ -39,15 +39,14 @@ Completed:
 - Post vulnerability remediation of left over security risks
 - Backups and restoration
 - Logging and Monitoring
+- IDS/IPS automation
 
 
 In progress:
-- IDS/IPS automation
 - SOAR-like response automation
 
 Planned:
-- Owasp Juice Shop pentest
-- Dokumentation of Results from Owasp pentest
+- SOAR automation
 
 
 
