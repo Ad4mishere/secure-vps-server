@@ -26,29 +26,7 @@ expansion into logging, monitoring, IDS/IPS, automation, and controlled attack s
 The lab is designed to reflect real-world security engineering and operational practices, not theoretical or checklist-based security.
 
 
-## Project status
-
-This project is actively developed in phases.
-
-Completed:
-- Initial VPS deployment
-- Baseline attack surface mapping
-- Initial vulnerability assessment and documentation
-- Server hardening after initial vulnerability assessment
-- Post vulnerability assessment and documentation
-- Post vulnerability remediation of left over security risks
-- Backups and restoration
-- Logging and Monitoring
-- IDS/IPS automation
-
-
-In progress:
-- SOAR-like response automation
-
-Planned:
-- Soar automation
-
-
+## Project 
 
 Project goals
 
@@ -157,7 +135,7 @@ Bash scripting
 ## Repository structure
 
 ```text
-secure-vps-lab/
+secure-vps-server/
 ├── README.md
 ├── docs/
 │   ├── 00-scope-and-planning.md
@@ -169,18 +147,14 @@ secure-vps-lab/
 │   ├── 06-logging-and-monitoring.md
 │   ├── 07-ids-ips.md
 │   ├── 08-soar-automation.md
-│   └── 9-project-summary.md
+│   └── 09-project-summary.md
 ├── scripts/
 │   ├── hardening/
 │   ├── post-hardening-remediation/
 │   ├── backup/
-│   ├── monitoring/
 │   ├── automation/
 │   └── sec-configs/
-├── configs/
 ├── screenshots/
-├── diagrams/
-└── assets/
 ```
 
 Documentation guide:

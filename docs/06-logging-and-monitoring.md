@@ -80,7 +80,7 @@ Correlation between sources
 ![Dashboard Overview](../screenshots/06-logging-monitoring/dashboard-overview.png)
 
 
-1. Fail2Ban – SSH Brute Force Detection
+1. Fail2Ban - SSH Brute Force Detection
 
 Purpose
 
@@ -121,7 +121,7 @@ Result: Reliable brute force detection without alert spam
 ![Fail2ban Alert Rules](../screenshots/06-logging-monitoring/fail2ban-configs-logs.png)
 ![Fail2ban Email Notification](../screenshots/06-logging-monitoring/fail2ban-mail.png)
 
-2. UFW – Port Scanning / Reconnaissance Detection
+2. UFW - Port Scanning / Reconnaissance Detection
 
 Purpose
 
@@ -183,7 +183,7 @@ Screenshot below is from a real scan from external unknown user
 ![UFW Alert Rule](../screenshots/06-logging-monitoring/ufw-alert-rule.png)
 
 
-3. Sudo – Privilege Escalation Detection
+3. Sudo - Privilege Escalation Detection
 
 Purpose
 

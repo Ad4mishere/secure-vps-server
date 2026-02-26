@@ -1,4 +1,4 @@
-8. SOAR Automation – Automated Response and Perimeter Hardening
+8. SOAR Automation - Automated Response and Perimeter Hardening
 
 8.1 Purpose of the SOAR Phase
 

@@ -1,4 +1,4 @@
-1. Initial Installation – Unhardened Baseline
+1. Initial Installation - Unhardened Baseline
 1.1 Purpose of This Phase
 
 The purpose of this phase is to establish a realistic, intentionally un-hardened baseline environment.

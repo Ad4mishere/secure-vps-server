@@ -35,9 +35,9 @@ nano scripts/backup/backup.sh
 
 Verify and update the following variables:
 
-REMOTE_HOST – IP address or hostname of the backup server
-REMOTE_USER – dedicated backup user on the backup server
-REMOTE_BASE – target directory on the backup server
+REMOTE_HOST - IP address or hostname of the backup server
+REMOTE_USER - dedicated backup user on the backup server
+REMOTE_BASE - target directory on the backup server
 
 Failure to configure these values correctly will result in failed external backups.
 
@@ -74,14 +74,14 @@ The goal is to preserve all data required to reconstruct the system with the sam
 
 The following data is included in the backup scope:
 
-/etc/nginx – web server configuration
-/etc/ssl/private – private key material (including self-signed certificates)
-/etc/letsencrypt – certificate data (if applicable)
-/home – user data and SSH configuration
-/root – administrative scripts and root-specific configuration
-/var/www – web server content
-/usr/local – locally installed scripts and administrative tools
-package-list.txt – inventory of installed packages used for system rebuild
+/etc/nginx - web server configuration
+/etc/ssl/private - private key material (including self-signed certificates)
+/etc/letsencrypt - certificate data (if applicable)
+/home - user data and SSH configuration
+/root - administrative scripts and root-specific configuration
+/var/www - web server content
+/usr/local - locally installed scripts and administrative tools
+package-list.txt - inventory of installed packages used for system rebuild
 
 Only certificate material actively referenced by services is included. System-wide certificate trust stores are intentionally excluded.
 
@@ -176,8 +176,8 @@ Backup execution is fully automated using cron jobs running as root on the prima
 
 The following schedule is used:
 
-02:00 – Local backup execution
-02:30 – External backup replication
+02:00 - Local backup execution
+02:30 - External backup replication
 
 This sequencing ensures that the external backup always reflects a complete and verified local backup.
 
@@ -230,7 +230,7 @@ The following restore phase demonstrates how the backed-up data and scripted sec
 
 
 
-5.18 Restore Validation – Local and Disaster Recovery
+5.18 Restore Validation - Local and Disaster Recovery
 
 The restore phase validates that the backup strategy is not only theoretically correct, but practically usable to recover system functionality and security posture after data loss or system rebuild.
 
@@ -402,7 +402,7 @@ sudo mkdir -p /backup/restore
 
 This directory is used as a staging area to avoid directly restoring data into system paths before verification.
 
-Phase 1 – Retrieve Backup from Backup Server
+Phase 1 - Retrieve Backup from Backup Server
 
 The backup is pulled from the backup server using rsync over SSH.
 
@@ -428,7 +428,7 @@ package-list.txt
 
 ![DR Backup Tree Retrieved](../screenshots/05-backup-restore/dr-backup-retrieved.png)
 
-Phase 2 – Restore Web Content
+Phase 2 - Restore Web Content
 sudo rsync -av /backup/restore/www/mocksite /var/www/
 sudo chown -R www-data:www-data /var/www/mocksite
 sudo chmod -R 755 /var/www/mocksite
@@ -442,14 +442,14 @@ ls -lah /var/www/mocksite
 
 ![DR Web Content Restored](../screenshots/05-backup-restore/dr-web-content-restored.png)
 
-Phase 3 – Restore Nginx Configuration
+Phase 3 - Restore Nginx Configuration
 sudo rsync -av /backup/restore/nginx/sites-available/mocksite /etc/nginx/sites-available/
 sudo ln -s /etc/nginx/sites-available/mocksite /etc/nginx/sites-enabled/mocksite
 
 
 This restores the virtual host configuration and enables the site.
 
-Phase 4 – Restore TLS Certificates (Self-Signed)
+Phase 4 - Restore TLS Certificates (Self-Signed)
 sudo mkdir -p /etc/ssl/certs /etc/ssl/private
 
 sudo rsync -av /backup/restore/ssl/nginx-selfsigned.crt /etc/ssl/certs/
@@ -464,7 +464,7 @@ sudo usermod -aG ssl-cert www-data
 Only service-specific certificate material is restored.
 System trust stores are intentionally excluded.
 
-Phase 5 – Service Validation and Startup
+Phase 5 - Service Validation and Startup
 sudo nginx -t
 sudo systemctl restart nginx
 sudo systemctl status nginx --no-pager

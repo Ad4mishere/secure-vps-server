@@ -32,7 +32,7 @@ Detection validation using controlled attack simulation
 The objective is not exploit development, but validation of detection capability within a controlled environment.
 
 
-7.2 Architectural Transition – From UFW Logging to Suricata IDS
+7.2 Architectural Transition - From UFW Logging to Suricata IDS
 
 During earlier phases, detection relied primarily on:
 
@@ -98,7 +98,7 @@ Screenshot
 ![Home_net configs in suricata](../screenshots/07-ids-ips/home-net.png)
 
 
-7.5 Structured Logging – eve.json
+7.5 Structured Logging - eve.json
 
 Suricata was configured to output structured JSON logs to:
 
@@ -209,7 +209,7 @@ Screenshot
 Grafana alert rule configuration
 
 
-7.9 Controlled Attack Simulation – Recon Testing
+7.9 Controlled Attack Simulation - Recon Testing
 
 Tool Used
 Nmap
@@ -232,7 +232,7 @@ Mail notification confirmed
 
 
 
-7.10 Controlled Attack Simulation – Web Exploitation (XSS)
+7.10 Controlled Attack Simulation - Web Exploitation (XSS)
 
 To validate application-layer inspection, an XSS payload was submitted:
 
