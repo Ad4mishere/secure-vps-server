@@ -47,7 +47,7 @@ In progress:
 
 Planned:
 - Soar automation
-- Juice-shop pentest
+
 
 
 Project goals
@@ -169,8 +169,7 @@ secure-vps-lab/
 │   ├── 06-logging-and-monitoring.md
 │   ├── 07-ids-ips.md
 │   ├── 08-soar-automation.md
-│   ├── 09-owasp-juice-shop-lab.md
-│   └── 10-portfolio-presentation.md
+│   └── 9-portfolio-presentation.md
 ├── scripts/
 │   ├── hardening/
 │   ├── post-hardening-remediation/
