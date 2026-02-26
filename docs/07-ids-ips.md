@@ -60,17 +60,6 @@ To address these limitations, Suricata was implemented as a network-based IDS.
 
 This represents a shift from basic firewall logging to structured intrusion detection.
 
-Screenshot Recommendation
-
-Insert:
-
-UFW logs from previous dashboard
-
-Followed by Suricata alerts dashboard
-
-Caption example:
-“Transition from host-based firewall logging to network-based intrusion detection using Suricata.”
-
 
 7.3 Suricata Deployment
 
@@ -84,8 +73,8 @@ Suricata was installed and configured in IDS mode.
 
 Verification:
 
-suricata -V
-Screenshot
+![Suricata Version](../screenshots/07-ids-ips/suricata-version.png)
+
 
 Suricata version verification
 
@@ -106,7 +95,7 @@ Alerts are contextualized relative to the protected asset
 
 Screenshot
 
-HOME_NET configuration inside suricata.yaml
+![Home_net configs in suricata](../screenshots/07-ids-ips/home-net.png)
 
 
 7.5 Structured Logging – eve.json
@@ -127,9 +116,7 @@ Alert categorization
 
 Integration with Loki and Grafana
 
-Screenshot
-
-eve.json showing event_type:"alert"
+![Suricata event type](../screenshots/07-ids-ips/eventtype-alert.png)
 
 
 7.6 Integration with Loki and Grafana
@@ -148,9 +135,7 @@ Recon vs Web exploitation separation
 
 This extends the logging and monitoring phase into actionable intrusion detection.
 
-Screenshot
-
-Grafana dashboard with Suricata panels
+![Suricata dashboard instead of UFW](../screenshots/07-ids-ips/suricata-dashboard.png)
 
 
 7.7 Alert Design and Classification Strategy
@@ -199,10 +184,11 @@ sum by (src_ip)(
     {job="suricata"}
     | json
     | event_type="alert"
-    | alert_category="Web Application Attack"
-  [2m])
+    | alert_category="Attempted.*Privilege Gain|Web Application Attack"
+  [5m])
 )
 ```
+
 Design Decisions:
 
 Grouping by src_ip ensures per-attacker evaluation
@@ -210,6 +196,13 @@ Grouping by src_ip ensures per-attacker evaluation
 Threshold-based logic prevents single-request false positives
 
 Architecture prepares for automated IP blocking in next phase
+
+The first picture is of the Web application attack, and the second one is for the Recon alert
+
+![Web Application Alert](../screenshots/07-ids-ips/webattack-alert.png)
+
+![Recon Attack Alert](../screenshots/07-ids-ips/reconattack-alert.png)
+
 
 Screenshot
 
@@ -235,10 +228,8 @@ Recon alert triggered correctly
 
 Mail notification confirmed
 
-Screenshot
+![Recon Attack Alert Mail](../screenshots/07-ids-ips/reconattack-mail.png)
 
-Nmap scan output
-Recon alert firing in Grafana
 
 
 7.10 Controlled Attack Simulation – Web Exploitation (XSS)
@@ -268,11 +259,9 @@ Application-layer payloads are inspected
 
 Signature-based detection is operational
 
-Screenshot
-
-eve.json showing XSS detection
-Grafana Web Alert firing
 Mail notification
+
+![Webb Application Attack Mail](../screenshots/07-ids-ips/webattack-mail.png)
 
 
 7.11 Design Decisions and Limitations
