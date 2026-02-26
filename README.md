@@ -46,8 +46,8 @@ In progress:
 - SOAR-like response automation
 
 Planned:
-- SOAR automation
-
+- Soar automation
+- Juice-shop pentest
 
 
 Project goals
