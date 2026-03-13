@@ -11,10 +11,12 @@ a passive storage endpoint.
 
 ## Script Overview
 
-Script name:
+**Script name:**
+
 - `backup.sh`
 
-Execution context:
+**Execution context:**
+
 - Must be executed as root
 - Intended to be run manually or via cron
 
@@ -36,95 +38,123 @@ Open the script:
 
 ```bash
 nano scripts/backup/backup.sh
+```
+
 Verify and update the following variables:
 
+```
 REMOTE_USER="backupuser"
 REMOTE_HOST="BACKUP_SERVER_IP"
 REMOTE_BASE="/backup/vps-server"
-REMOTE_USER
+```
+
+**REMOTE_USER**  
 Dedicated non-privileged user on the backup server
 
-REMOTE_HOST
+**REMOTE_HOST**  
 IP address or hostname of the backup server
 
-REMOTE_BASE
+**REMOTE_BASE**  
 Target directory on the backup server (must exist and be owned by REMOTE_USER)
 
 The script will fail if these values are incorrect.
 
-SSH Authentication Requirements
-SSH key-based authentication must be configured
+---
 
-Password-based authentication should be disabled after key deployment
+## SSH Authentication Requirements
 
-The backup server must not require sudo access for the backup user
+- SSH key-based authentication must be configured
+- Password-based authentication should be disabled after key deployment
+- The backup server must not require sudo access for the backup user
 
 The primary server initiates all connections.
 
-Local Backup Structure
+---
+
+## Local Backup Structure
+
 Local backups are stored under:
 
+```
 /backup/daily/YYYY-MM-DD
+```
+
 A symbolic link is maintained:
 
+```
 /backup/latest -> /backup/daily/YYYY-MM-DD
+```
+
 This simplifies verification and restore operations.
 
-Data Included in Backup
+---
+
+## Data Included in Backup
+
 The script backs up only persistent and non-regenerable data, including:
 
-/etc/nginx
-
-/etc/ssl/private
-
-/etc/letsencrypt (if present)
-
-/home
-
-/root
-
-/var/www
-
-/usr/local
-
-/backup/package-list.txt
+- `/etc/nginx`
+- `/etc/ssl/private`
+- `/etc/letsencrypt` (if present)
+- `/home`
+- `/root`
+- `/var/www`
+- `/usr/local`
+- `/backup/package-list.txt`
 
 Dynamic system paths are explicitly excluded.
 
-Retention Policy
-Backups are retained for 7 days
+---
 
-Older backups are automatically deleted
+## Retention Policy
 
-Retention is enforced on every run
+- Backups are retained for 7 days
+- Older backups are automatically deleted
+- Retention is enforced on every run
 
-Automation (Optional)
+---
+
+## Automation (Optional)
+
 The script is designed to be executed via cron.
 
 Example cron configuration:
 
+```bash
 0 02 * * * /scripts/backup/backup.sh
+```
+
 Ensure the script is executable:
 
+```bash
 chmod 700 scripts/backup/backup.sh
-Logging and Verification
-The script outputs clear status messages to stdout.
+```
+
+---
+
+## Logging and Verification
+
+The script outputs clear status messages to stdout.  
 When executed via cron, execution can be verified through system logs.
 
-Design Philosophy
-No backup logic runs on the backup server
+---
 
-No runtime-generated data is preserved
+## Design Philosophy
 
-Configuration and data are restored separately
+- No backup logic runs on the backup server
+- No runtime-generated data is preserved
+- Configuration and data are restored separately
+- Predictability and auditability are prioritized over complexity
 
-Predictability and auditability are prioritized over complexity
+---
 
 # Restore Procedure – Manual Disaster Recovery
 
 This directory documents the restore process for the backup system.
 
 The restore phase is intentionally **not fully automated**. While automation is appropriate for backups, restoration is performed manually to ensure safety, flexibility, and administrative control.
+
+---
 
 ## Why Restore Is Manual
 
@@ -137,6 +167,7 @@ Restore operations vary significantly depending on:
 - Deployment context
 
 Automating restore logic could introduce risks such as:
+
 - Overwriting valid system data
 - Incorrect permissions
 - Service misconfiguration
@@ -151,11 +182,13 @@ For these reasons, restore is documented as a **guided manual process**.
 The `restore.sh` file serves as a **reference checklist**, not a one-click restore script.
 
 It contains:
+
 - Ordered restore steps
 - Example commands
 - Validation checks
 
 Administrators are expected to:
+
 - Review each command
 - Adjust paths and values to their environment
 - Execute commands manually
