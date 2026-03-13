@@ -1,6 +1,6 @@
-0. Scope and Planning
+# 0. Scope and Planning
 
-0.1 Project Scope
+## 0.1 Project Scope
 
 This project focuses on practical infrastructure and operational security in a production-like Linux server environment. The work examines how a server exposed to realistic network conditions can be secured, monitored, and operated using security-first and defense-in-depth principles.
 
@@ -32,7 +32,7 @@ Implementation and validation of backup and recovery procedures
 
 The project is iterative in nature, and the depth of individual components may vary depending on progress, while maintaining a consistent and methodical approach.
 
-0.2 Out of Scope
+## 0.2 Out of Scope
 
 The project does not aim to perform comprehensive application security assessments or detailed vulnerability research at the application level. The following activities are explicitly out of scope as primary objectives:
 
@@ -48,7 +48,7 @@ Unauthorized testing of third-party systems
 
 Application security is not evaluated as a standalone goal, and no conclusions are drawn regarding the security posture of specific applications.
 
-0.3 Application-Layer Activity and Controlled Attack Simulation
+## 0.3 Application-Layer Activity and Controlled Attack Simulation
 
 Although application security is not a primary focus, controlled application-layer attack simulations may be performed in isolated test environments.
 
@@ -64,7 +64,7 @@ Observe how infrastructure-level security controls react to attack patterns
 
 The objective of these simulations is not to assess or improve application security, but to evaluate the effectiveness of infrastructure-level detection and response mechanisms. The application environments used for this purpose are treated as disposable and interchangeable and serve only as traffic generators for security testing.
 
-0.4 Definition of “Pentest” in This Project
+## 0.4 Definition of “Pentest” in This Project
 
 In this project, the term penetration testing (pentest) refers to a controlled, non-destructive security assessment of the server environment. Pentest activities are used to identify exposure, misconfigurations, and weaknesses at the infrastructure level without performing full exploitation.
 
@@ -82,7 +82,7 @@ Controlled attack simulations designed to test detection and response
 
 All pentest activities are conducted solely against environments owned and operated as part of the project and are intended to support risk assessment, hardening decisions, and verification of security controls.
 
-0.5 Objectives and Expected Outcomes
+## 0.5 Objectives and Expected Outcomes
 
 The primary objective of the project is to demonstrate practical competence in securing, operating, and monitoring a Linux-based server environment under realistic conditions.
 
